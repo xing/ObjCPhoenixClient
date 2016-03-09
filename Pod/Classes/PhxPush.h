@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PhxPush : NSObject
 
+@property (nonatomic, strong, readonly) NSString *event;
+@property (nonatomic, strong, readonly) NSDictionary *payload;
+
 - (instancetype)initWithChannel:(PhxChannel*)channel
                           event:(NSString*)event
                         payload:(NSDictionary*)payload;

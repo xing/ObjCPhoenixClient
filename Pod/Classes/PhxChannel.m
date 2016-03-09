@@ -18,10 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) ChannelState state;
 
-@property (nonatomic, strong) NSMutableArray *bindings;
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> *bindings;
 
 @property (atomic) BOOL joinedOnce;
 @property (nonatomic, strong) PhxPush *joinPush;
+@property (nonatomic, weak) PhxSocket* socket;
+@property (nonatomic, strong) NSString* topic;
+@property (nonatomic, strong) NSDictionary *params;
 
 @end
 
@@ -40,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
             self.params = @{};
         }
         self.socket = socket;
-        self.bindings = [NSMutableArray new];
+        self.bindings = [NSMutableArray array];
         [self.socket addChannel:self];
         
         self.joinedOnce = NO;
@@ -121,8 +124,8 @@ NS_ASSUME_NONNULL_BEGIN
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *binding, NSDictionary *bindings) {
         return [[binding valueForKey:@"event"] isEqualToString:event];
     }];
-    NSArray *bindings = [self.bindings filteredArrayUsingPredicate:predicate];
-    for (NSDictionary *binding in bindings) {
+    NSArray *filteredBindings = [self.bindings filteredArrayUsingPredicate:predicate];
+    for (NSDictionary *binding in filteredBindings) {
         [self.bindings removeObject:binding];
     }
 }

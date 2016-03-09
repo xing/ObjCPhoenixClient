@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CA202C385D53C0106993074 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C10C6B517F156A7FEEBBCDD4 /* libPods.a */; };
 		285A656BF2E1213C3B7D40F7 /* libPods-ChannelDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA6C2F617F1CC930A14647 /* libPods-ChannelDemo.a */; };
 		C0127C321C7B305300D305EA /* PhxSocketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0127C311C7B305300D305EA /* PhxSocketTests.m */; };
 		C8A2C2DF1B83D2E3007CF006 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8A2C2DD1B83D2E3007CF006 /* Interface.storyboard */; };
@@ -126,7 +125,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CA202C385D53C0106993074 /* libPods.a in Frameworks */,
 				285A656BF2E1213C3B7D40F7 /* libPods-ChannelDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +343,7 @@
 		C8FD27501B824CBB0030D3A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = PhoenixFramework;
 				TargetAttributes = {
 					C8A2C2DA1B83D2E3007CF006 = {
@@ -635,6 +633,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -700,6 +699,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChannelDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -711,6 +711,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChannelDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

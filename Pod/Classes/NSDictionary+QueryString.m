@@ -9,6 +9,8 @@
 #import "NSDictionary+QueryString.h"
 #import "NSString+URLEncoding.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation NSDictionary (QueryString)
 
 + (NSDictionary *)dictionaryWithQueryString:(NSString *)queryString {
@@ -59,3 +61,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
