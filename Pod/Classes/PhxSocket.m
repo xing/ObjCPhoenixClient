@@ -197,7 +197,7 @@ static NSTimeInterval kReconnectInterval = 5;
         [self startHeartbeatTimerWithInterval:self.heartbeatInterval];
     }
     
-    for (OnOpen callback in self.openCallbacks) {
+    for (OnOpen callback in [self.openCallbacks copy]) {
         callback();
     }
     
@@ -221,7 +221,7 @@ static NSTimeInterval kReconnectInterval = 5;
     }
     [self discardHeartbeatTimer];
     
-    for (OnClose callback in self.closeCallbacks) {
+    for (OnClose callback in [self.closeCallbacks copy]) {
         callback(event);
     }
     
@@ -235,7 +235,7 @@ static NSTimeInterval kReconnectInterval = 5;
     [self.queue setSuspended:YES];
     [self discardHeartbeatTimer];
 
-    for (OnError callback in self.errorCallbacks) {
+    for (OnError callback in [self.errorCallbacks copy]) {
         callback(error);
     }
     
@@ -262,7 +262,7 @@ static NSTimeInterval kReconnectInterval = 5;
         for (PhxChannel *channel in channels) {
             [channel triggerEvent:event message:payload ref:ref];
         }
-        for (OnMessage callback in self.messageCallbacks) {
+        for (OnMessage callback in [self.messageCallbacks copy]) {
             callback(json);
         }
     }
