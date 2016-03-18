@@ -230,7 +230,7 @@ static NSTimeInterval kReconnectInterval = 5;
     }
 }
 
-- (void)onConnError:(id)error {
+- (void)onConnError:(NSError *)error {
     NSLog(@"PhxSocket Failed with Error: %@", [error localizedDescription]);
     [self.queue setSuspended:YES];
     [self discardHeartbeatTimer];
@@ -245,7 +245,7 @@ static NSTimeInterval kReconnectInterval = 5;
     [self onConnClose:error];
 }
 
-- (void)onConnMessage:(NSString*)rawMessage {
+- (void)onConnMessage:(NSString *)rawMessage {
     NSLog(@"PhxSocket Message:%@",(NSString*)rawMessage);
     NSData *data = [rawMessage dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error;
