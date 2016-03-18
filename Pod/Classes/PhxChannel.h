@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithSocket:(PhxSocket*)socket
                          topic:(NSString*)topic
-                        params:(nullable NSDictionary*)params;
+                        params:(NSDictionary*)params;
 
 - (PhxPush*)join;
 - (void)leave;

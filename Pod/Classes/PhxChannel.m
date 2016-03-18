@@ -32,16 +32,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithSocket:(PhxSocket *)socket
                          topic:(NSString *)topic
-                        params:(nullable NSDictionary *)params {
+                        params:(NSDictionary *)params {
     self = [super init];
     if (self) {
         self.state = ChannelClosed;
         self.topic = topic;
-        if (params != nil) {
-            self.params = params;
-        } else {
-            self.params = @{};
-        }
+        self.params = params;
         self.socket = socket;
         self.bindings = [NSMutableArray array];
         [self.socket addChannel:self];
