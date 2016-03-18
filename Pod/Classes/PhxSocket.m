@@ -59,6 +59,7 @@ static NSTimeInterval kReconnectInterval = 5;
         self.errorCallbacks = [NSMutableArray new];
         self.messageCallbacks = [NSMutableArray new];
         self.reconnectOnError = YES;
+        self.reconnectInterval = kReconnectInterval;
 
         self.queue = [[NSOperationQueue alloc] init];
         [self.queue setSuspended:YES];
@@ -76,7 +77,6 @@ static NSTimeInterval kReconnectInterval = 5;
     NSURL *url;
     self.params = params;
     if (self.params != nil) {
-        
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [self.URL absoluteString], [self.params queryStringValue]]];
     } else {
         url = self.URL;
@@ -213,7 +213,7 @@ static NSTimeInterval kReconnectInterval = 5;
     
     if (self.reconnectOnError) {
         [self discardReconnectTimer];
-        self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:kReconnectInterval
+        self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:self.reconnectInterval
                                                                target:self
                                                              selector:@selector(reconnect)
                                                              userInfo:nil
