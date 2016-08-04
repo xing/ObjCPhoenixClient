@@ -82,7 +82,6 @@ static NSTimeInterval kReconnectInterval = 5;
         url = self.URL;
     }
     
-    NSLog(@"URL: %@", url);
     self.socket = [[SRWebSocket alloc]initWithURL:url];
     self.socket.delegate = self;
     [self.socket open];
@@ -190,7 +189,6 @@ static NSTimeInterval kReconnectInterval = 5;
 }
 
 - (void)onConnOpen {
-    NSLog(@"PhxSocket Opened");
     [self.queue setSuspended:NO];
     [self discardReconnectTimer];
     if (self.heartbeatInterval > 0) {
@@ -207,7 +205,6 @@ static NSTimeInterval kReconnectInterval = 5;
 }
 
 - (void)onConnClose:(id)event {
-    NSLog(@"PhxSocket Closed");
     [self.queue setSuspended:YES];
     [self triggerChanError:event];
     
@@ -231,7 +228,6 @@ static NSTimeInterval kReconnectInterval = 5;
 }
 
 - (void)onConnError:(NSError *)error {
-    NSLog(@"PhxSocket Failed with Error: %@", [error localizedDescription]);
     [self.queue setSuspended:YES];
     [self discardHeartbeatTimer];
 
@@ -246,7 +242,6 @@ static NSTimeInterval kReconnectInterval = 5;
 }
 
 - (void)onConnMessage:(NSString *)rawMessage {
-    NSLog(@"PhxSocket Message:%@",(NSString*)rawMessage);
     NSData *data = [rawMessage dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error;
     id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
